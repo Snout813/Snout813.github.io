@@ -99,11 +99,11 @@ h5{
     font-weight: 700;
     line-height: 150%;
     margin-left: 106.67px;
-    margin-top:356px;
+    margin-top:230px;
 }
 /* second */
 .second{
-    margin-top:132px;
+    margin-top:90px;
 }
 .menu{
     display: flex;
@@ -247,7 +247,7 @@ h5{
 }
 
 .footer_subtext{
-    color: #fff;
+    color: #000;
     font-family: Noto Sans KR;
     font-size: 14px;
     font-style: normal;
@@ -258,7 +258,7 @@ h5{
 }
 
 .text_deco{
-    color: #087c23;
+    color: #fff;
     font-family: Noto Sans KR;
     font-size: 14px;
     font-style: normal;
