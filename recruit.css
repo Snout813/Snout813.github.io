@@ -1,0 +1,204 @@
+/*--header--*/
+*{
+    /*font-family: 'Noto Sans KR', sans-serif;*/
+    list-style: none; /*목록에 점을 없애는 기능*/
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    /*color: #000;*/
+}
+
+.header{
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 100; /*가장 상단에 위치함을 나타냄*/
+    /*header 사라지지 않게 하기 위한 용도*/
+    display: flex; /*logo와 네비게이션 바 함께 두기 위한 용도*/
+
+    width: 100%;
+    height: 53px;
+    background-color: #fff;
+}
+
+.logo{
+    display: flex;
+
+    margin-left: 100px; /*logo 왼쪽에 두기위한 용도*/
+    background-color: #fff;
+}
+
+.nav{
+    display: flex;
+    justify-content: flex-end;
+    margin-left:auto;
+    margin-right:53px;
+    line-height: 53px;
+    background-color: #fff;
+}
+
+.nav > li{
+    margin-left: 53px;
+}
+
+.nav > li > a{
+    color: #54B977;
+    text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;
+    text-align: center;
+    font-family: Akzidenz-Grotesk BQ;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/*--first--*/
+
+.first{
+    width: 100%;
+    height: 285px;
+    background-color: #54B977;
+    padding-top: 53px;
+    padding-left: 107px;
+}
+
+.title{
+    color: #F9D96C;
+    text-shadow: -1px 0px #000, 0px 1px #000, 1px 0px #000, 0px -1px #000;
+    font-family: Noto Sans KR;
+    font-size: 56.667px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    padding-top: 23px;
+}
+
+.sub{
+
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 15.333px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    padding-top: 25px;
+}
+
+/*--지원 자격--*/
+.apply{
+    padding-top: 100px;
+}
+
+.content_title{
+    color: #000;
+    text-align: center;
+    font-family: Noto Sans KR;
+    font-size: 33.333px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.content1{
+    display: flex;
+    width: 1067px;
+    margin: auto;
+    background-color: #fff;
+}
+
+.content1 > li{
+    flex: 1;
+    width: 335px;
+    height: 228px;
+    margin-top: 67px;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+}
+
+.content1 > li:not(:last-child){
+    margin-right: 30px;
+}
+
+.content_subtitle{
+    padding-top: 30px;
+    padding-left: 26px;
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.content{
+    padding-top: 12px;
+    padding-left: 26px;
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%; /* 17.6px */
+}
+
+/*--모집 일정--*/
+
+.schedule, .procedure{
+    padding-top: 160px;
+}
+
+
+/*--fotter--*/
+.footer{
+    margin-top: 100px;
+    width: 100%;
+    height: 330px;
+    padding-left: 110px;
+    background-color: #54B977;
+}
+
+.footer_text{
+    color: #F9D96C;
+    font-family: Noto Sans KR;
+    font-size: 26.585px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;
+    padding-top: 58px;
+}
+
+.footer_subtext{
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
+
+    padding-top: 18px;
+}
+
+.text_deco{
+    color: #fff;
+    font-family: Noto Sans KR;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
+
+    /*text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;*/
+}
+
+.footer_icons{
+    display: flex;
+    padding-top: 65px;
+}
+
+.footer_icons > li{
+    margin-right: 33px;
+}
+
