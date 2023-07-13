@@ -79,7 +79,122 @@ h5{
 }
 
 /* first */
+.first{
+    margin-top:80px;
+    width: 1214px;
+    height: 136px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #54B977;
+    border-radius: 20px;
+}
+.title{
+    margin-left: 47px;
+    padding-top: 42px;
+    margin-right: auto;
+    max-width: 800px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: center;
+    color:#f9d96c;
+    font-family: Noto Sans KR;
+    font-size: 28px;
+    font-style:normal;
+    font-weight: bold;
+    line-height: normal;
+}
+.subtext{
+    margin-top:11px;
+    margin-left: 47px;
+    margin-right: auto;
+    max-width: 800px;
+    height:20px;
+    justify-content: center;
+    color: #fff;
+    font-size:16px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: Noto Sans KR;
+    line-height: normal;
+}
 
+.second{
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1214px;
+    height: 456px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.second > img{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.third{
+    margin-left: 47px;
+    margin-top:24px;
+}
+.first_line{
+    display: flex;
+}
+.summary{
+    width: 387px;
+    height: 418px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    border-radius: 20px;
+}
+.summary > h2{
+    width: 130px;
+    height: 25px;
+    color:#000;
+    font-family: Noto Sans KR;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    margin-left:45px;
+    margin-top:38px;
+    margin-bottom: 32px;
+}
+.contain{
+    display: flex;
+    margin-left: 45px;
+}
+.contain >p{
+    margin-top: 42px;
+    width:95px;
+    height: 22px;
+    
+
+}
+.explain{
+    width: 794px;
+    height: 328px;
+    margin-left: 29px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+}
+.explain > h2{
+    width: 300px;
+    height: 23px;
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: normal;
+    margin-top: 36px;
+    margin-left:37px;
+}
+.explain > p{
+
+}
+.second_line{
+
+}
 
 
 
