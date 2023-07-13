@@ -85,8 +85,10 @@ h5{
     height: 136px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #54B977;
+    background-color:#585858;
     border-radius: 20px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+
 }
 .title{
     margin-left: 47px;
@@ -96,7 +98,7 @@ h5{
     height: 30px;
     flex-direction: column;
     justify-content: center;
-    color:#f9d96c;
+    color:#54B977;
     font-family: Noto Sans KR;
     font-size: 28px;
     font-style:normal;
@@ -127,6 +129,8 @@ h5{
     border-radius: 20px;
     overflow: hidden;
     position: relative;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+
 }
 .second > img{
     position: absolute;
@@ -136,8 +140,10 @@ h5{
     transform: translate(-50%, -50%);
 }
 .third{
-    margin-left: 47px;
+    margin-left:auto;
+    margin-right:auto;
     margin-top:24px;
+    width:1214px;
 }
 .first_line{
     display: flex;
@@ -151,7 +157,7 @@ h5{
 .summary > h2{
     width: 130px;
     height: 25px;
-    color:#000;
+    color:#54B977;
     font-family: Noto Sans KR;
     font-size: 20px;
     font-weight: bold;
@@ -162,14 +168,29 @@ h5{
 }
 .contain{
     display: flex;
-    margin-left: 45px;
+    margin-left:13px
+}
+.kind{
+    margin-bottom: 42px;
+    width: 95px;
+    height:22px;
+    color:#000;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+
 }
 .contain >p{
-    margin-top: 42px;
-    width:95px;
+    margin-left: 31px;
+    margin-bottom: 42px;
+    max-width:180px;
     height: 22px;
-    
-
+    color:#000;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
 }
 .explain{
     width: 794px;
@@ -181,7 +202,7 @@ h5{
 .explain > h2{
     width: 300px;
     height: 23px;
-    color: #000;
+    color: #54B977;
     font-family: Noto Sans KR;
     font-size: 22px;
     font-weight: bold;
@@ -189,15 +210,50 @@ h5{
     margin-top: 36px;
     margin-left:37px;
 }
+
 .explain > p{
+    margin-top: 64px;
+    margin-left:37px;
+    width: 709px;
+    height: 155px;
+    color: #000;
+    font-family: Noto Sans KR;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
 
 }
 .second_line{
-
+    width: 387px;
+    height: 418px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    border-radius: 20px;
 }
-
-
-
+.second_line > h2{
+    width: 130px;
+    height: 25px;
+    color:#54B977;
+    font-family: Noto Sans KR;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    margin-left:45px;
+    margin-top:19px;
+    padding-top:38px;
+    margin-bottom: 32px;
+}
+.second_line >p{
+    margin-left: 31px;
+    margin-bottom: 42px;
+    max-width:180px;
+    height: 22px;
+    color:#000;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+}
 
 /*footer*/
 .footer{
