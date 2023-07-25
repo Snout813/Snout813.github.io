@@ -89,7 +89,7 @@ h5{
     background-color: white;
 
 }
-.typing1{
+.intro>h3{
     color: #54B977;
     text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;
     text-align: left;
@@ -101,17 +101,6 @@ h5{
     margin-left: 106.67px;
     margin-top:230px;
     position: relative;
-}
-.typing2{
-    color: #54B977;
-    text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;
-    text-align: left;
-    font-family: Noto Sans KR;
-    font-size: 33.333px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    margin-left: 106.67px;  
 }
 
 /* second */
@@ -257,6 +246,7 @@ h5{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
     text-shadow: -0.3px 0px #000, 0px 0.3px #000, 0.3px 0px #000, 0px -0.3px #000;
     padding-top: 58px;
 }
