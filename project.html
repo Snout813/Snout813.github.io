@@ -6,6 +6,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="project.css">
         <title>SLE | IT 개발 동아리</title>
+        <script src = "project.js"></script>
+        <script src ="typing.js"></script>
         <meta charset="uft8">
     </head>
     <body>
@@ -25,31 +27,34 @@
             <div class="first">
                 <div class="main">
                     <div class="intro">
-                        <h3>슬기짜기만의<br>다양한 프로젝트를 탐험해보아요!</h3>
+                        <h3 class="typing1">
+                        </h3>
+                        <h3 class="typing2">
+                        </h3>
                     </div>
                 </div>
             </div>
             <div class = "second">
                 <div class="menu">
-                    <li class="menu-item">
-                        <a href="#">ALL</a>
+                    <li class="menu-item" data-filter="*">
+                        <a>ALL</a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#">2023-1</a>
+                    <li class="menu-item" data-filter ="2023-1">
+                        <a>2023-1</a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#">2022-2</a>
+                    <li class="menu-item" data-filter = "2022-2">
+                        <a>2022-2</a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#">2022-1</a>
+                    <li class="menu-item" data-filter = "2022-1">
+                        <a>2022-1</a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#">2021-2</a>
+                    <li class="menu-item" data-filete="2021-2">
+                        <a>2021-2</a>
                     </li>
                 </div>
             </div>
             <div class = "third">
-                <div class=card>
+                <div class=card data-type="2023-1">
                     <div class = "img">
                         <a href="project/project1.html">
                             <img src ="image/project.png" alt="">
@@ -248,6 +253,11 @@
                     </div>
                 </div>
             </div>         
+        </div>
+        <div class="btns">
+            <button class="moveTopBtn">
+                &#8593;
+            </button>
         </div>
         <div class="footer">
             <div class="footer_text">슬기짜기</div>
