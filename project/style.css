@@ -78,6 +78,10 @@ h5{
     line-height: normal;
 }
 
+#login_icon{
+    padding-top: 8px;
+}
+
 /* first */
 .first{
     position: relative;
@@ -132,16 +136,14 @@ hr.solid{
 
 
 .third{
-    margin-right:auto;
     margin-top:67px;
-    width:1214px;
 }
 .first_line{
     display: flex;
 }
 .summary{
     margin-left:106px;
-    width: 418px;
+    width: 400px;
     height: 287px;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.10);
     border-radius: 16px;
@@ -160,7 +162,7 @@ hr.solid{
 }
 .contain{
     display: flex;
-    margin-left:45px
+    margin-left:20px
 }
 .kind{
     margin-bottom: 42px;
@@ -174,7 +176,7 @@ hr.solid{
 
 }
 .contain >p{
-    margin-left: 31px;
+    margin-left: 40px;
     margin-bottom: 42px;
     max-width:180px;
     height: 22px;
@@ -185,11 +187,11 @@ hr.solid{
     line-height: normal;
 }
 .explain{
-    width: 785px;
+    width: 800px;
     height: 287px;
     margin-left: 26px;
     border-radius: 20px;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.10);
 }
 .explain > h2{
     width: 300px;
