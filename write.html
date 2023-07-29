@@ -1,62 +1,148 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>login</title>
-    </head>
-    <body>
-        <form>
-            <h1>로그인</h1>
-            <div>Email : <input type = "email" id = "signInEmail"/></div>
-            <div>Password : <input type ="password" id = "signInPassword"/></div>
-            <button type ="summit" id="signInButton">Login</button>
-        </form>
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-        
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-            apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
-            authDomain: "sle-web-64734.firebaseapp.com",
-            projectId: "sle-web-64734",
-            storageBucket: "sle-web-64734.appspot.com",
-            messagingSenderId: "22889544223",
-            appId: "1:22889544223:web:041ca634e846ee42eb332a",
-            measurementId: "G-ML4269WMVH"
-            };
-        
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
+<html>
+<head>
+  <title>글쓰기 페이지</title>
+</head>
+<body>
+  <h1>글쓰기 페이지</h1>
+  
+  <!-- 글쓰기 폼 시작 -->
+  <form action="/save" method="post" onsubmit="return validateForm();">
+    <!-- 제목 입력 -->
+    <label for="title">제목:</label>
+    <input type="text" id="title" name="title" required>
+    <br>
+    
+    <!-- 사진 업로드 -->
+    <label for="photo">사진:</label>
+    <input type="file" id="photo" name="photo" accept="image/*">
+    <br>
+    
+    <!-- 기간 입력 -->
+    <label for="year">년도:</label>
+    <select id="year" name="year" required>
+      <option value="">년도 선택</option>
+      <!-- JavaScript로 현재 년도까지의 옵션을 동적으로 생성 -->
+      <script>
+        const currentYear = new Date().getFullYear();
+        const yearSelect = document.getElementById('year');
+        for (let year = 2017; year <= currentYear; year++) {
+          const option = document.createElement('option');
+          option.value = year;
+          option.text = year + '년';
+          yearSelect.appendChild(option);
+        }
+      </script>
+    </select>
+    <label for="semester">학기:</label>
+    <select id="semester" name="semester" required>
+      <option value="">학기 선택</option>
+      <option value="1">1학기</option>
+      <option value="2">2학기</option>
+    </select>
+    <br>
+    
+    <!-- 팀원 입력 -->
+    <label for="team">팀원:</label>
+    <input type="text" id="team" name="team" required>
+    <br>
+    
+    <!-- 프로젝트 형태 입력 -->
+    <label for="projectType">프로젝트 형태:</label>
+    <select id="projectType" name="projectType" required>
+      <option value="">프로젝트 형태 선택</option>
+      <option value="Web">Web</option>
+      <option value="AI">AI</option>
+      <option value="App">App</option>
+      <option value="게임">게임</option>
+      <option value="기타">기타</option>
+    </select>
+    <br>
+    
+    <!-- 프로젝트 링크 입력 -->
+    <label for="projectLink">프로젝트 링크:</label>
+    <input type="url" id="projectLink" name="projectLink">
+    <br>
+    
+    <!-- 설명 입력 -->
+    <label for="description">설명:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+    <br>
+    
+    <!-- 제출 버튼 -->
+    <input type="submit" value="글쓰기" id="submitButton" onclick="redirectToProjectPage();">
+    <!-- 취소 버튼 -->
+    <button type="button" onclick="goToProjectPage()">취소</button>
+  </form>
+  <!-- 글쓰기 폼 끝 -->
 
-            import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-            const auth = getAuth();
-            document.getElementById('signInButton').addEventListener('click', (event) =>{
-                event.preventDefault()
-                const signInEmail = document.getElementById('signInEmail').value;
-                const signInPassword = document.getElementById('signInPassword').value;
-                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
-                    .then((userCredential) => {
-                        console.log(userCredential)
-                        // Signed in
-                        const user = userCredential.user;
-                        // ...
-                        alert("로그인에 성공했습니다!")
-                        window.location.href = "index.html";
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        alert("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.");
+  <!-- Firebase SDK 추가 -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js"></script>
 
-                    });
-            })
-        </script>
-    </body>
+  <script>
+    // Firebase 프로젝트 구성으로 대체합니다.
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Firebase 초기화
+    firebase.initializeApp(firebaseConfig);
+
+    // Firestore 데이터베이스에 대한 참조를 가져옵니다.
+    const db = firebase.firestore();
+
+    function validateForm() {
+      // 입력 필드들을 가져옴
+      const title = document.getElementById('title').value;
+      const year = document.getElementById('year').value;
+      const semester = document.getElementById('semester').value;
+      const team = document.getElementById('team').value;
+      const projectType = document.getElementById('projectType').value;
+      const projectLink = document.getElementById('projectLink').value;
+      const description = document.getElementById('description').value;
+
+      // 모든 필드가 비어있는지 확인
+      if (title === '' || year === '' || semester === '' || team === '' || projectType === '' || description === '') {
+        alert('내용을 입력해주세요.');
+        return false; // 폼 제출을 막음
+      }
+
+      // Firebase 데이터베이스에 데이터 저장
+      db.collection(`${year}-${semester}`).add({
+        title: title,
+        year: year,
+        semester: semester,
+        team: team,
+        projectType: projectType,
+        projectLink: projectLink,
+        description: description
+      })
+      .then(() => {
+        alert('데이터가 성공적으로 저장되었습니다.');
+        redirectToProjectPage(); // 데이터 저장 후 즉시 리디렉션
+      })
+      .catch((error) => {
+        console.error('문서 추가 오류:', error);
+        alert('데이터 저장에 실패했습니다.');
+      });
+
+      // 폼 제출을 허용하지 않음
+      return false;
+    }
+
+    function redirectToProjectPage() {
+      window.location.href = 'project.html'; // project.html 페이지로 이동
+    }
+
+    function goToProjectPage() {
+      window.location.href = 'project.html'; // project.html 페이지로 돌아감
+    }
+  </script>
+</body>
 </html>
