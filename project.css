@@ -149,7 +149,7 @@ h5{
 
 /*third*/
 .third{
-    margin-top:62.67px;
+    margin-top:15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -218,7 +218,12 @@ h5{
     margin-right:20.39px;
     margin-left: auto;
     margin-top: 14.67px;
+    transition: .2s;
 
+}
+.date:hover{
+    color:#000;
+    background: #f9d96c;
 }
 .second_line{
     margin-top: 6.67px;
@@ -316,9 +321,9 @@ h5{
 }
 .writeButton{
     display:flex;
-    position: ;
-    margin-right: 50px;
-    margin-left:auto;
+    position: relative;
+
+
 }
 .write{
     background: #54B977;
@@ -330,6 +335,12 @@ h5{
     transition: .2s;
     color: #F0F0F0;
     border: 0;
+    font-size :17px;
+    width: 70px;
+    height: 30px;
+    margin-top:15px;
+    margin-right: 190px;
+    margin-left:auto;
 }
 .write:hover{
     color:#000;
