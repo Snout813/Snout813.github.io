@@ -207,3 +207,29 @@
     margin-right: 33px;
 }
 
+.btns {
+    display: flex;
+    position: fixed;
+    right: .4rem;
+    bottom: .4rem;
+    border: 0;
+
+}
+.moveTopBtn {
+    padding: .6rem 1.5rem;
+    background: #54B977;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .2s;
+    color: #F0F0F0;
+    margin-right: .4rem;
+    border: 0;
+    
+}
+.moveTopBtn:hover{
+    color: #000;
+    background: #f9d96c;
+}
