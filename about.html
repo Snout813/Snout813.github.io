@@ -1,111 +1,245 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>프로젝트 정보 확인</title>
-  <link rel="stylesheet" type="text/css" href="about.css">
+  <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Noto Sans Korean -->
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="about.css">
+      <title>SLE | IT 개발 동아리</title>
+      <meta charset="uft8">
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+          <a href="index.html">
+              <img src="image/logo.png" weigt="71px" height="53px">
+          </a>
+      </div>
+      <ul class="nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="project.html">PROJECT</a></li>
+        <li><a href="recruit.html">RECRUIT</a></li>
+        <li><a href="login.html" id = "loginmenu"><span id ="loginText">LogIn</span></a></li>
+      </ul>
+    </div>
+    <div class = "first">
+      <img src = "image/project1_banner.png" weigt="100%" height="690px" class = "img">
+    </div>
+    <div id ="load">
+    </div>
 
-</head>
-<body>
-  <h1>프로젝트 정보 확인</h1>
-  <div id="projectInfo"></div>
-  <div><button id="delete">삭제</button></div>
-  <!-- Firebase SDK 로드 -->
-  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
+    <div>
+      <button id="delete">삭제</button>
+    </div>
+    <div class="footer">
+      <div class="footer_text">
+          슬기짜기
+      </div>
+      <div class="footer_subtext">외래어인 컴퓨터의 순우리말 <span class="text_deco">‘슬기셈틀’</span>과 <span class="text_deco">‘짜다'</span>라는 단어가 더해진 <span class="text_deco">‘슬기짜기'</span>는 컴퓨터를 이용해 할 수 있는 
+          <br>모든 것을 지향하는 컴퓨터 동아리입니다!
+      </div>
 
-  <script type="module">
-    // Firebase 프로젝트 구성으로 대체합니다.
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, query, where, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-    const deleteButton = document.getElementById("delete");
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        // Firebase 설정 정보 입력
-        apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
-        authDomain: "sle-web-64734.firebaseapp.com",
-        projectId: "sle-web-64734",
-        storageBucket: "sle-web-64734.appspot.com",
-        messagingSenderId: "22889544223",
-        appId: "1:22889544223:web:041ca634e846ee42eb332a", 
-        measurementId: "G-ML4269WMVH"
-    };
-    
-    // Firebase 초기화
-    const app = initializeApp(firebaseConfig);
-    // Firestore 데이터베이스에 대한 참조를 가져옵니다.
-    const db = getFirestore(app); 
+      <div class="footer_icons">
+          <li><img src="image/footer_icon1.png" width="27px" height="27px"></li>
+          <li><img src="image/footer_icon2.png" width="27px" height="27px"></li>
+          <li><img src="image/footer_icon3.png" width="27px" height="27px"></li>
+      </div>
+  </div>
 
-    // URL 파라미터에서 title 정보 읽어오기
-    if(localStorage.getItem('title')){
-      var title = localStorage.getItem('title')
-    }
 
-    // title 정보 사용 예시
-    if (title) {
-      // title 정보를 이용하여 필요한 작업 수행
-      // 데이터 표시 함수 호출
-      fetchDataByTitle(title);
-    } else {
-      // title 정보가 없을 경우에 대한 처리 (예: 기본값으로 데이터 표시 등)
-    }
-    
-    // 원하는 정보를 가져와서 화면에 표시하는 함수
-    async function fetchDataByTitle(title) {
-      const dataListDiv = document.getElementById('projectInfo'); // 변경된 ID 사용
-      try {
-        // "projects" 컬렉션에서 title 필드와 일치하는 문서들을 가져오는 쿼리 생성 (Firebase에서 "projects" 컬렉션 이름으로 가정합니다)
-        const q = query(collection(db, "users"), where("title", "==", title));
-        const querySnapshot = await getDocs(q);
 
-        // 가져온 문서들을 화면에 표시
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          const itemDiv = document.createElement('div');
-          itemDiv.innerHTML = `
-            <h2>${data.title}</h2>
-            <p><strong>년도:</strong> ${data.year}</p>
-            <p><strong>학기:</strong> ${data.semester}</p>
-            <p><strong>팀원:</strong> ${data.team}</p>
-            <p><strong>프로젝트 형태:</strong> ${data.projectType}</p>
-            <p><strong>프로젝트 링크:</strong> ${data.projectLink}</p>
-            <p><strong>설명:</strong> ${data.description}</p>
-            <hr>
-          `;
-          dataListDiv.appendChild(itemDiv);
-        });
-      } catch (error) {
-        console.error("Error fetching documents: ", error);
-      }
-    }
-    // 삭제 버튼 클릭 이벤트 처리 함수
-    deleteButton.addEventListener("click", () => {
-      const confirmation = confirm("정말로 문서를 삭제하시겠습니까?");
-      if (confirmation) {
-        try {
-          // 해당 문서를 찾아서 삭제
-          const q = query(collection(db, "users"), where("title", "==", title));
-          getDocs(q).then(querySnapshot => {
-            const deletePromises = [];
-            querySnapshot.forEach((doc) => {
-              deletePromises.push(deleteDoc(doc.ref));
+    <!-- Firebase SDK 로드 -->
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
+
+    <script type="module">
+      // Firebase 프로젝트 구성으로 대체합니다.
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import { getFirestore, collection, query, where, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+      import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+      const deleteButton = document.getElementById("delete");
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+          // Firebase 설정 정보 입력
+          apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
+          authDomain: "sle-web-64734.firebaseapp.com",
+          projectId: "sle-web-64734",
+          storageBucket: "sle-web-64734.appspot.com",
+          messagingSenderId: "22889544223",
+          appId: "1:22889544223:web:041ca634e846ee42eb332a", 
+          measurementId: "G-ML4269WMVH"
+      };
+      
+      // Firebase 초기화
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      // Firestore 데이터베이스에 대한 참조를 가져옵니다.
+      const db = getFirestore(app); 
+      // Firebase의 인증 상태를 확인하고 "Login" 또는 "Logout" 텍스트를 변경하는 함수
+      function checkLoginStatus() {
+            const loginMenu = document.getElementById("loginmenu");
+            const loginText = document.getElementById("loginText");
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    console.log("user");
+                    // 사용자가 로그인 상태일 때, "Logout"으로 변경
+                    loginText.textContent = "Logout";
+                    loginMenu.href = "index.html"; // 더미 링크를 사용하여 클릭 이벤트 방지 (실제로 링크를 클릭해도 페이지가 이동하지 않음)
+
+                    // Logout 버튼 클릭 시 Firebase에서 로그아웃하고 index.html로 리다이렉션
+                    loginMenu.addEventListener("click", () => {
+                        signOut(auth).then(() => {
+                        // Sign-out successful.
+                        }).catch((error) => {
+                        // An error happened.
+                        });
+                    });
+                // 삭제 버튼 클릭 이벤트 처리 함수
+                deleteButton.addEventListener("click", () => {
+                  const confirmation = confirm("정말로 문서를 삭제하시겠습니까?");
+                  if (confirmation) {
+                    try {
+                      // 해당 문서를 찾아서 삭제
+                      const q = query(collection(db, "users"), where("title", "==", title));
+                      getDocs(q).then(querySnapshot => {
+                        const deletePromises = [];
+                        querySnapshot.forEach((doc) => {
+                          deletePromises.push(deleteDoc(doc.ref));
+                        });
+                        return Promise.all(deletePromises);
+                      }).then(() => {
+                        alert("문서가 성공적으로 삭제되었습니다.");
+                        // 삭제 후 project.html로 이동
+                        window.location.href = "project.html";
+                      }).catch(error => {
+                        console.error("Error deleting document: ", error);
+                      });
+                    } catch (error) {
+                      console.error("Error deleting document: ", error);
+                    }
+                  } else {
+                    console.log("문서 삭제가 취소되었습니다.");
+                  }
+                });
+                } else {
+                  console.log("no");
+                  // 사용자가 로그아웃 상태일 때, "Login"으로 변경
+                  loginText.textContent = "LogIn";
+                  // 실제 로그인 페이지로 이동하도록 href 속성을 설정
+                  loginMenu.href = "login.html";
+                  deleteButton.addEventListener("click", () => {
+                        alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+                        window.location.href = "login.html"; // Replace "login.html" with your actual login page URL
+                    });
+                }
             });
-            return Promise.all(deletePromises);
-          }).then(() => {
-            alert("문서가 성공적으로 삭제되었습니다.");
-            // 삭제 후 project.html로 이동
-            window.location.href = "project.html";
-          }).catch(error => {
-            console.error("Error deleting document: ", error);
+            }
+
+            // 페이지가 로드되면 로그인 상태를 확인하여 텍스트 변경
+            window.addEventListener("load", checkLoginStatus);
+      // URL 파라미터에서 title 정보 읽어오기
+      if(localStorage.getItem('title')){
+        var title = localStorage.getItem('title')
+      }
+
+      // title 정보 사용 예시
+      if (title) {
+        // title 정보를 이용하여 필요한 작업 수행
+        // 데이터 표시 함수 호출
+        fetchDataByTitle(title);
+      } else {
+        // title 정보가 없을 경우에 대한 처리 (예: 기본값으로 데이터 표시 등)
+      }
+      
+      // 원하는 정보를 가져와서 화면에 표시하는 함수
+      async function fetchDataByTitle(title) {
+        const dataListDiv = document.getElementById('load'); // 변경된 ID 사용
+        try {
+          // "projects" 컬렉션에서 title 필드와 일치하는 문서들을 가져오는 쿼리 생성 (Firebase에서 "projects" 컬렉션 이름으로 가정합니다)
+          const q = query(collection(db, "users"), where("title", "==", title));
+          const querySnapshot = await getDocs(q);
+
+          // 가져온 문서들을 화면에 표시
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const itemDiv1 = document.createElement('div');
+            itemDiv1.classList.add("second");
+            itemDiv1.innerHTML = `
+              <p class ="date">
+                ${data.year}-${data.semester}
+              </p>
+              <p class ="title">
+                ${data.title}
+              </p>
+              <hr class ="solid" width="1230px">
+              <hr>
+            `;
+            const itemDiv2 = document.createElement('div');
+            itemDiv2.classList.add("third");
+            itemDiv2.innerHTML = `
+              <div class = "first_line">
+                  <div class= "summary">
+                      <h2>프로젝트 요약</h2>
+                      <div class="contain">
+                          <p class ="kind">기간</p>
+                          <p>${data.year}-${data.semester}</p>
+                      </div>
+                      <div class ="contain">
+                          <p class = "kind">참여원</p>
+                          <p>${data.team}</p>
+                      </div>
+                      <div class ="contain">
+                          <p class = "kind">형태</p>
+                          <p>${data.projectType}</p>
+                      </div>
+                  </div>
+                  <div class = "explain">
+                      <h2>프로젝트 설명</h2>
+                      <p>
+                          | 서비스 소개 | ${data.description}
+                      </p>
+                  </div>
+              </div>
+              <p><strong>프로젝트 링크:</strong> ${data.projectLink}</p>
+            `;
+            dataListDiv.appendChild(itemDiv1);
+            dataListDiv.appendChild(itemDiv2);
           });
         } catch (error) {
-          console.error("Error deleting document: ", error);
+          console.error("Error fetching documents: ", error);
         }
-      } else {
-        console.log("문서 삭제가 취소되었습니다.");
       }
-    });
-  </script>
-</body>
+      // 삭제 버튼 클릭 이벤트 처리 함수
+      deleteButton.addEventListener("click", () => {
+        const confirmation = confirm("정말로 문서를 삭제하시겠습니까?");
+        if (confirmation) {
+          try {
+            // 해당 문서를 찾아서 삭제
+            const q = query(collection(db, "users"), where("title", "==", title));
+            getDocs(q).then(querySnapshot => {
+              const deletePromises = [];
+              querySnapshot.forEach((doc) => {
+                deletePromises.push(deleteDoc(doc.ref));
+              });
+              return Promise.all(deletePromises);
+            }).then(() => {
+              alert("문서가 성공적으로 삭제되었습니다.");
+              // 삭제 후 project.html로 이동
+              window.location.href = "project.html";
+            }).catch(error => {
+              console.error("Error deleting document: ", error);
+            });
+          } catch (error) {
+            console.error("Error deleting document: ", error);
+          }
+        } else {
+          console.log("문서 삭제가 취소되었습니다.");
+        }
+      });
+    </script>
+  </body>
 </html>
