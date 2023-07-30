@@ -4,7 +4,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Noto Sans Korean -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="about.css">
         <title>SLE | IT 개발 동아리</title>
         <meta charset="uft8">
     </head>
@@ -19,7 +19,7 @@
                 <li><a href="../index.html">HOME</a></li>
                 <li><a href="../project.html">PROJECT</a></li>
                 <li><a href="../recruit.html">RECRUIT</a></li>
-                <li><a href="../login.html"><img src="../image/login_icon.png" id="login_icon" width="35px" height="35px" ></a></li>
+                <li><a href="login.html" id = "loginmenu"><span id ="loginText">LogIn</span></a></li>
             </ul>
         </div>
         <div class = "first">
@@ -72,5 +72,65 @@
                 <li><img src="../image/footer_icon3.png" width="27px" height="27px"></li>
             </div>
         </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
+              authDomain: "sle-web-64734.firebaseapp.com",
+              projectId: "sle-web-64734",
+              storageBucket: "sle-web-64734.appspot.com",
+              messagingSenderId: "22889544223",
+              appId: "1:22889544223:web:041ca634e846ee42eb332a",
+              measurementId: "G-ML4269WMVH"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+
+            const auth = getAuth();
+
+            // Firebase의 인증 상태를 확인하고 "Login" 또는 "Logout" 텍스트를 변경하는 함수
+            function checkLoginStatus() {
+            const loginMenu = document.getElementById("loginmenu");
+            const loginText = document.getElementById("loginText");
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                console.log("user");
+                // 사용자가 로그인 상태일 때, "Logout"으로 변경
+                loginText.textContent = "Logout";
+                loginMenu.href = "index.html"; // 더미 링크를 사용하여 클릭 이벤트 방지 (실제로 링크를 클릭해도 페이지가 이동하지 않음)
+
+                // Logout 버튼 클릭 시 Firebase에서 로그아웃하고 index.html로 리다이렉션
+                loginMenu.addEventListener("click", () => {
+                    signOut(auth).then(() => {
+                    // Sign-out successful.
+                    }).catch((error) => {
+                    // An error happened.
+                    });
+                });
+                } else {
+                console.log("no");
+                // 사용자가 로그아웃 상태일 때, "Login"으로 변경
+                loginText.textContent = "LogIn";
+                // 실제 로그인 페이지로 이동하도록 href 속성을 설정
+                loginMenu.href = "../login.html";
+                }
+            });
+            }
+
+            // 페이지가 로드되면 로그인 상태를 확인하여 텍스트 변경
+            window.addEventListener("load", checkLoginStatus);
+          </script>
     </body>
 </html>

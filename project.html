@@ -118,7 +118,7 @@
                         itemDiv.setAttribute('data-type', `${data.year}-${data.semester}`); // data-type 속성 추가
                         itemDiv.innerHTML = `
                             <div class = "img">
-                                <a href="projectCheck.html">
+                                <a href="about.html">
                                     <img src ="image/project.png" alt="">
                                 </a>
                             </div>
@@ -153,7 +153,6 @@
             // 카드 클릭 시 페이지 이동 및 title 정보 전달 함수
             function goToProjectPage(title) {
                 // title 정보를 URL 파라미터로 추가하여 projectCheck.html 페이지로 이동
-                alert(title);
                 localStorage.setItem('title', title);
             
             }
