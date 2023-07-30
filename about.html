@@ -213,33 +213,7 @@
           console.error("Error fetching documents: ", error);
         }
       }
-      // 삭제 버튼 클릭 이벤트 처리 함수
-      deleteButton.addEventListener("click", () => {
-        const confirmation = confirm("정말로 문서를 삭제하시겠습니까?");
-        if (confirmation) {
-          try {
-            // 해당 문서를 찾아서 삭제
-            const q = query(collection(db, "users"), where("title", "==", title));
-            getDocs(q).then(querySnapshot => {
-              const deletePromises = [];
-              querySnapshot.forEach((doc) => {
-                deletePromises.push(deleteDoc(doc.ref));
-              });
-              return Promise.all(deletePromises);
-            }).then(() => {
-              alert("문서가 성공적으로 삭제되었습니다.");
-              // 삭제 후 project.html로 이동
-              window.location.href = "project.html";
-            }).catch(error => {
-              console.error("Error deleting document: ", error);
-            });
-          } catch (error) {
-            console.error("Error deleting document: ", error);
-          }
-        } else {
-          console.log("문서 삭제가 취소되었습니다.");
-        }
-      });
+
     </script>
   </body>
 </html>
