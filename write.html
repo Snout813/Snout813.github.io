@@ -64,7 +64,7 @@
     
     <!-- 프로젝트 링크 입력 -->
     <label for="projectLink">프로젝트 링크:</label>
-    <input type="url" id="projectLink" name="projectLink">
+    <input type="text" id="projectLink" name="projectLink">
     <br>
     
     <!-- 설명 입력 -->
@@ -73,7 +73,7 @@
     <br>
     
     <!-- 제출 버튼 -->
-    <input type="submit" value="글쓰기" id="submitButton" onclick="redirectToProjectPage();">
+    <button type="button" id="submitButton">Submit</button>
     <!-- 취소 버튼 -->
     <button type="button" onclick="goToProjectPage()">취소</button>
   </form>
@@ -85,6 +85,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
     import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    import { getFirestore, setDoc, addDoc, doc, collection } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     // Firebase 프로젝트 구성으로 대체합니다.
     const firebaseConfig = {
               apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
@@ -98,7 +99,9 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const db= getFirestore(app);
     const auth = getAuth();
+
     function checkLoginStatus() {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
@@ -107,51 +110,36 @@
                   window.location.href = 'index.html'; // 'index.html'을 로그인 페이지의 실제 URL로 변경해주세요
                 }
             });
-            }
-    // Firestore 데이터베이스에 대한 참조를 가져옵니다.
-
-    function validateForm() {
-      // 입력 필드들을 가져옴
-      const title = document.getElementById('title').value;
-      const year = document.getElementById('year').value;
-      const semester = document.getElementById('semester').value;
-      const team = document.getElementById('team').value;
-      const projectType = document.getElementById('projectType').value;
-      const projectLink = document.getElementById('projectLink').value;
-      const description = document.getElementById('description').value;
-
-      // 모든 필드가 비어있는지 확인
-      if (title === '' || year === '' || semester === '' || team === '' || projectType === '' || description === '') {
-        alert('내용을 입력해주세요.');
-        return false; // 폼 제출을 막음
-      }
-
-      // Firebase 데이터베이스에 데이터 저장
-      db.collection(`${year}-${semester}`).add({
-        title: title,
-        year: year,
-        semester: semester,
-        team: team,
-        projectType: projectType,
-        projectLink: projectLink,
-        description: description
-      })
-      .then(() => {
-        alert('데이터가 성공적으로 저장되었습니다.');
-        redirectToProjectPage(); // 데이터 저장 후 즉시 리디렉션
-      })
-      .catch((error) => {
-        console.error('문서 추가 오류:', error);
-        alert('데이터 저장에 실패했습니다.');
-      });
-
-      // 폼 제출을 허용하지 않음
-      return false;
     }
+    submitData.addEventListener('click', (e) => {
+        var title = document.getElementById('title').value;
+        var year = document.getElementById('year').value;
+        var semester = document.getElementById('semester').value;
+        var team = document.getElementById('team').value;
+        var projectType = document.getElementById('projectType').value;
+        var projectLink = document.getElementById('projectLink').value;
+        var description = document.getElementById('description').value;
 
-    function redirectToProjectPage() {
-      window.location.href = 'project.html'; // project.html 페이지로 이동
-    }
+        alert(title);
+        alert(year);
+        alert(semester);
+        alert(team);
+        alert(projectType);
+        alert(projectLink);
+        alert(description);
+
+        addDoc(collection(db, "users"), {
+            title: title,
+            year: year,
+            semester: semester,
+            team: team,
+            projectType: projectType,
+            projectLink: projectLink,
+            description: description
+        });
+
+        alert('Project added'); 
+        });
 
     function goToProjectPage() {
       window.location.href = 'project.html'; // project.html 페이지로 돌아감
