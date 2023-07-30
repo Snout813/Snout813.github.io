@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html leg="kor">
+    <head>
+        <title>SLE | IT 개발 동아리</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Noto Sans Korean -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="project.css">
+        <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
+        <script src = "project.js"></script>
+        <script src ="typing.js"></script>
+        <meta charset="uft8">
+    </head>
+    <body>
+        <div class="weap">
+            <div class="header">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="image/logo.png" weigt="71px" height="53px">
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="project.html">PROJECT</a></li>
+                    <li><a href="recruit.html">RECRUIT</a></li>
+                    <li><a href="login.html" id = "loginmenu"><span id ="loginText">LogIn</span></a></li>
+                </ul>
+            </div>
+            <div class="first">
+                <div class="main">
+                    <div class="intro">
+                        <h3 class="typing">
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class = "second">
+                <div class="menu">
+                    <li class="menu-item" data-filter="ALL">
+                        <a>ALL</a>
+                    </li>
+                    <li class="menu-item" data-filter ="2023-1">
+                        <a>2023-1</a>
+                    </li>
+                    <li class="menu-item" data-filter = "2022-2">
+                        <a>2022-2</a>
+                    </li>
+                    <li class="menu-item" data-filter = "2022-1">
+                        <a>2022-1</a>
+                    </li>
+                    <li class="menu-item" data-filter="2021-2">
+                        <a>2021-2</a>
+                    </li>
+                </div>
+            </div>
+            <div class="writeButton">
+                <button id="writeButton" class="write">글 쓰기</button>
+            </div>
+            <!--
+            <div class = "third">
+                <div class=card data-type="2023-1">
+                    <div class = "img">
+                        <a href="project/project1.html">
+                            <img src ="image/project.png" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="project/project1.html">
+                                슬기짜기 웹페이지
+                            </a>
+                            <p class = "date">
+                                2023-1
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2023-1">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2023-1
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2023-1">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2022-2
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2023-1">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2022-2
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2022-2">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2022-2
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2022-1">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2022-1
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2022-1">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2022-1
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2021-2">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2021-2
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class=card data-type="2021-2">
+                    <div class = "img">
+                        <a href="#">
+                            <img src ="" alt="">
+                        </a>
+                    </div>
+                    <div class = "text">
+                        <div class = "first_line">
+                            <a href="#">
+                                슬기짜기
+                            </a>
+                            <p class = "date">
+                                2021-2
+                            </p>
+                        </div>
+                        <div class = second_line>
+                            <p class="tag">
+                                #웹팀 #슬기짜기
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        -->      
+        </div>
+
+        <div class = "third">
+
+        </div>
+
+        <div class="btns">
+            <button class="moveTopBtn">
+                &#8593;
+            </button>
+        </div>
+        <div class="footer">
+            <div class="footer_text">슬기짜기</div>
+            <div class="footer_subtext">외래어인 컴퓨터의 순우리말 <span class="text_deco">‘슬기셈틀’</span>과 <span class="text_deco">‘짜다'</span>라는 단어가 더해진 <span class="text_deco">‘슬기짜기'</span>는 컴퓨터를 이용해 할 수 있는 
+                <br>모든 것을 지향하는 컴퓨터 동아리입니다!</div>
+
+            <div class="footer_icons">
+                <li><img src="image/footer_icon1.png" width="27px" height="27px"></li>
+                <li><img src="image/footer_icon2.png" width="27px" height="27px"></li>
+                <li><img src="image/footer_icon3.png" width="27px" height="27px"></li>
+            </div>
+        </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+            import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
+              authDomain: "sle-web-64734.firebaseapp.com",
+              projectId: "sle-web-64734",
+              storageBucket: "sle-web-64734.appspot.com",
+              messagingSenderId: "22889544223",
+              appId: "1:22889544223:web:041ca634e846ee42eb332a",
+              measurementId: "G-ML4269WMVH"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const db = getFirestore(app);
+            const auth = getAuth();
+
+            async function displayData() {
+                const dataListDiv = document.getElementById('third');
+                
+                try {
+                    // "users" 컬렉션에서 모든 문서 가져오기
+                    const querySnapshot = await getDocs(collection(db, "users"));
+                    
+                    // 가져온 문서들을 화면에 표시
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const itemDiv = document.createElement('div');
+                        itemDiv.innerHTML = `
+                            <div class=card data-type="${data.year}-${data.semester}">
+                                <div class = "img">
+                                    <a href="project/about.html">
+                                        <img src ="image/project.png" alt="">
+                                    </a>
+                                </div>
+                                <div class = "text">
+                                    <div class="first_line">
+                                        <a href="project/about.html">
+                                            ${data.title}
+                                        </a>
+                                        <p class="date">
+                                            ${data.year}-${data.semester}
+                                        </p>
+                                    </div>
+                                    <div class="second_line">
+                                        <p class="tag">
+                                            #${data.team} 
+                                            #${data.projectType}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                    `;
+                        dataListDiv.appendChild(itemDiv);
+
+                        // 카드 클릭 시 goToProjectPage 함수 호출하여 해당 card의 title 정보 전달
+                        itemDiv.addEventListener('click', () => {
+                        goToProjectPage(data.title);
+                        });
+                    });
+                } catch (error) {
+                    console.log("error");
+                }
+            }
+            
+            // 카드 클릭 시 페이지 이동 및 title 정보 전달 함수
+            function goToProjectPage(title) {
+                // title 정보를 URL 파라미터로 추가하여 projectCheck.html 페이지로 이동
+                alert(title);
+                const encodedTitle = encodeURIComponent(title);
+                window.location.href = `projectCheck.html?title=${encodedTitle}`;
+            }
+            window.addEventListener("load", displayData);
+            
+
+            // Firebase의 인증 상태를 확인하고 "Login" 또는 "Logout" 텍스트를 변경하는 함수
+            function checkLoginStatus() {
+                const loginMenu = document.getElementById("loginmenu");
+                const loginText = document.getElementById("loginText");
+                const writeButton = document.getElementById("writeButton");
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        console.log("user");
+                        // 사용자가 로그인 상태일 때, "Logout"으로 변경
+                        loginText.textContent = "Logout";
+                        loginMenu.href = "index.html"; // 더미 링크를 사용하여 클릭 이벤트 방지 (실제로 링크를 클릭해도 페이지가 이동하지 않음)
+                        // Logout 버튼 클릭 시 Firebase에서 로그아웃하고 index.html로 리다이렉션
+                        loginMenu.addEventListener("click", () => {
+                            signOut(auth).then(() => {
+                            // Sign-out successful.
+                            }).catch((error) => {
+                            // An error happened.
+                            });
+
+                        });
+                        writeButton.addEventListener("click", () => {
+                            window.location.href = "write.html";
+                        });
+                    } else {
+                    console.log("no");
+                    // 사용자가 로그아웃 상태일 때, "Login"으로 변경
+                    loginText.textContent = "LogIn";
+                    // 실제 로그인 페이지로 이동하도록 href 속성을 설정
+                    loginMenu.href = "login.html";
+                    writeButton.addEventListener("click", () => {
+                        alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+                        window.location.href = "login.html"; // Replace "login.html" with your actual login page URL
+                    });
+
+                    }
+                });
+            }
+            // 카테고리 필터용
+            function filterCards(category) {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach((card) => {
+                const dataType = card.getAttribute('data-type');
+                if (dataType === category || category === 'ALL') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+                });
+            }
+
+            // 카테고리 버튼에 이벤트 리스너를 추가하는 함수
+            function addCategoryListeners() {
+                const categoryButtons = document.querySelectorAll('.menu-item');
+                categoryButtons.forEach((button) => {
+                    button.addEventListener('click', (event) => {
+                        const selectedCategory = event.currentTarget.getAttribute('data-filter');
+                        filterCards(selectedCategory);
+                    });
+                });
+            }
+
+            // "ALL" 버튼 클릭 시 모든 카드를 표시하도록 이벤트 리스너 추가
+            function addAllButtonListener() {
+                const allButton = document.querySelector('.menu-item[data-filter="ALL"]');
+                allButton.addEventListener('click', () => {
+                filterCards('ALL');
+                });
+            }
+            // 페이지가 로드되면 로그인 상태를 확인하여 텍스트 변경
+            window.addEventListener("load", checkLoginStatus);
+            // 페이지 로드 이벤트 핸들러
+            window.addEventListener('load', () => {
+                addCategoryListeners();
+                addAllButtonListener(); // "ALL" 버튼 리스너 추가
+            });
+        </script>
+    </body>
+</html>
