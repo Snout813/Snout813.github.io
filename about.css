@@ -109,7 +109,7 @@ h5{
     padding-top: 20px;
     padding-bottom: 20px;
     width: 1300px;
-    background-color: #f9f9f9; /* 이미지 밑에 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
+    background-color: #fff; /* 이미지 밑에 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
 }
 .date{
     color:#fff;
@@ -164,7 +164,7 @@ hr.solid{
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: left;
-    background-color: #f0f0f0; /* 요소들이 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
+    background-color: #fff; /* 요소들이 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
 }
 .first_line{
     display: flex;
