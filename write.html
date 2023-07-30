@@ -111,7 +111,25 @@
                 }
             });
     }
+    function validateForm() {
+      const title = document.getElementById('title').value;
+      const year = document.getElementById('year').value;
+      const semester = document.getElementById('semester').value;
+      const team = document.getElementById('team').value;
+      const projectType = document.getElementById('projectType').value;
+      const description = document.getElementById('description').value;
+
+      if (!title || !year || !semester || !team || !projectType || !description) {
+        alert('모든 정보를 입력해주세요.');
+        return false;
+      }
+
+      return true;
+    }
+    const submitData = document.getElementById("submitButton");
     submitData.addEventListener('click', (e) => {
+      e.preventDefault(); // 폼 제출 방지
+      if (validateForm()) {
         var title = document.getElementById('title').value;
         var year = document.getElementById('year').value;
         var semester = document.getElementById('semester').value;
@@ -119,14 +137,6 @@
         var projectType = document.getElementById('projectType').value;
         var projectLink = document.getElementById('projectLink').value;
         var description = document.getElementById('description').value;
-
-        alert(title);
-        alert(year);
-        alert(semester);
-        alert(team);
-        alert(projectType);
-        alert(projectLink);
-        alert(description);
 
         addDoc(collection(db, "users"), {
             title: title,
@@ -136,10 +146,12 @@
             projectType: projectType,
             projectLink: projectLink,
             description: description
+        }).then(()=>{
+          alert('프로젝트가 추가되었습니다.');
+          goToProjectPage(); // 프로젝트 추가 후 "project.html"로 이동
         });
-
-        alert('Project added'); 
-        });
+      }
+    });
 
     function goToProjectPage() {
       window.location.href = 'project.html'; // project.html 페이지로 돌아감
