@@ -4,78 +4,76 @@
     <title>글쓰기 페이지</title>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js"></script>
+    <link rel="stylesheet" type="text/css" href="write.css">
     <meta charset="uft8">
 </head>
 <body>
-  <h1>글쓰기 페이지</h1>
   
   <!-- 글쓰기 폼 시작 -->
   <form action="/save" method="post" onsubmit="return validateForm();">
     <!-- 제목 입력 -->
-    <label for="title">제목:</label>
-    <input type="text" id="title" name="title" required>
-    <br>
-    
-    <!-- 사진 업로드 -->
-    <label for="photo">사진:</label>
-    <input type="file" id="photo" name="photo" accept="image/*">
-    <br>
+    <input type="text" id="title" name="title" required
+    placeholder="    제목" onfocus="this.placeholder=''" onblur="this.placeholder='    제목'"/>>
     
     <!-- 기간 입력 -->
-    <label for="year">년도:</label>
-    <select id="year" name="year" required>
-      <option value="">년도 선택</option>
-      <!-- JavaScript로 현재 년도까지의 옵션을 동적으로 생성 -->
-      <script>
-        const currentYear = new Date().getFullYear();
-        const yearSelect = document.getElementById('year');
-        for (let year = 2017; year <= currentYear; year++) {
-          const option = document.createElement('option');
-          option.value = year;
-          option.text = year + '년';
-          yearSelect.appendChild(option);
-        }
-      </script>
-    </select>
-    <label for="semester">학기:</label>
-    <select id="semester" name="semester" required>
-      <option value="">학기 선택</option>
-      <option value="1">1학기</option>
-      <option value="2">2학기</option>
-    </select>
-    <br>
+    <div class="selectBox">
+      <select id="year" name="year" class="select" required>
+        <option value="">년도 선택</option>
+        <!-- JavaScript로 현재 년도까지의 옵션을 동적으로 생성 -->
+        <script>
+          const currentYear = new Date().getFullYear();
+          const yearSelect = document.getElementById('year');
+          for (let year = 2021; year <= currentYear; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.text = year + '년';
+            yearSelect.appendChild(option);
+          }
+        </script>
+      </select>
+    </div>
+
+    <div class="selectBox">
+      <select id="semester" name="semester" class="select" required>
+        <option value="">학기 선택</option>
+        <option value="1">1학기</option>
+        <option value="2">2학기</option>
+      </select>
+      <br>
+    </div>
     
     <!-- 팀원 입력 -->
-    <label for="team">팀원:</label>
-    <input type="text" id="team" name="team" required>
+    <input type="text" id="team" name="team" required
+    placeholder="    팀원" onfocus="this.placeholder=''" onblur="this.placeholder='    팀원'">
     <br>
     
     <!-- 프로젝트 형태 입력 -->
-    <label for="projectType">프로젝트 형태:</label>
-    <select id="projectType" name="projectType" required>
-      <option value="">프로젝트 형태 선택</option>
-      <option value="Web">Web</option>
-      <option value="AI">AI</option>
-      <option value="App">App</option>
-      <option value="게임">게임</option>
-      <option value="기타">기타</option>
-    </select>
-    <br>
+    <div class="selectBox">
+      <select id="projectType" name="projectType" class="select" required>
+        <option value="">프로젝트 형태 선택</option>
+        <option value="Web">Web</option>
+        <option value="AI">AI</option>
+        <option value="App">App</option>
+        <option value="게임">게임</option>
+        <option value="기타">기타</option>
+      </select>
+      <br>
+    </div>
     
     <!-- 프로젝트 링크 입력 -->
-    <label for="projectLink">프로젝트 링크:</label>
-    <input type="text" id="projectLink" name="projectLink">
+    <input type="text" id="projectLink" name="projectLink"
+    placeholder="    프로젝트 링크" onfocus="this.placeholder=''" onblur="this.placeholder='    프로젝트 링크'">
     <br>
     
     <!-- 설명 입력 -->
-    <label for="description">설명:</label><br>
-    <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+    <textarea id="description" name="description" rows="4" cols="50" required
+    placeholder="    프로젝트 설명을 적어주세요" onfocus="this.placeholder=''" onblur="this.placeholder='    프로젝트 설명을 적어주세요'"></textarea>
     <br>
     
     <!-- 제출 버튼 -->
     <button type="button" id="submitButton">Submit</button>
     <!-- 취소 버튼 -->
-    <button type="button" onclick="goToProjectPage()">취소</button>
+    <button type="button" id="cancleButton" onclick="goToProjectPage()">취소</button>
   </form>
   <!-- 글쓰기 폼 끝 -->
 
@@ -111,7 +109,25 @@
                 }
             });
     }
+    function validateForm() {
+      const title = document.getElementById('title').value;
+      const year = document.getElementById('year').value;
+      const semester = document.getElementById('semester').value;
+      const team = document.getElementById('team').value;
+      const projectType = document.getElementById('projectType').value;
+      const description = document.getElementById('description').value;
+
+      if (!title || !year || !semester || !team || !projectType || !description) {
+        alert('모든 정보를 입력해주세요.');
+        return false;
+      }
+
+      return true;
+    }
+    const submitData = document.getElementById("submitButton");
     submitData.addEventListener('click', (e) => {
+      e.preventDefault(); // 폼 제출 방지
+      if (validateForm()) {
         var title = document.getElementById('title').value;
         var year = document.getElementById('year').value;
         var semester = document.getElementById('semester').value;
@@ -119,14 +135,6 @@
         var projectType = document.getElementById('projectType').value;
         var projectLink = document.getElementById('projectLink').value;
         var description = document.getElementById('description').value;
-
-        alert(title);
-        alert(year);
-        alert(semester);
-        alert(team);
-        alert(projectType);
-        alert(projectLink);
-        alert(description);
 
         addDoc(collection(db, "users"), {
             title: title,
@@ -136,10 +144,12 @@
             projectType: projectType,
             projectLink: projectLink,
             description: description
+        }).then(()=>{
+          alert('프로젝트가 추가되었습니다.');
+          goToProjectPage(); // 프로젝트 추가 후 "project.html"로 이동
         });
-
-        alert('Project added'); 
-        });
+      }
+    });
 
     function goToProjectPage() {
       window.location.href = 'project.html'; // project.html 페이지로 돌아감
