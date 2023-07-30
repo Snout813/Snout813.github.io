@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>프로젝트 정보 확인</title>
+  <!-- 이곳에 필요한 메타 태그와 스타일시트 등 추가 -->
+</head>
+<body>
+  <h1>프로젝트 정보 확인</h1>
+  <div id="projectInfo"></div>
+
+  <script type="module">
+    // URL 파라미터를 읽어오는 함수
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // 페이지 로드 시 실행되는 함수
+    document.addEventListener('DOMContentLoaded', () => {
+      // URL 파라미터에서 'title' 값을 읽어옴
+      const title = getQueryParam('title');
+
+      // 읽어온 'title' 값을 화면에 출력
+      const projectInfoDiv = document.getElementById('projectInfo');
+      projectInfoDiv.innerText = `프로젝트 제목: ${title}`;
+    });
+  </script>
+</body>
+</html>

@@ -69,8 +69,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
 
   <script type="module">
-    // Firebase 프로젝트 구성으로 대체합니다.
-    // Import the functions you need from the SDKs you need
+    // Firebase 초기화 및 displayData 함수
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
     
@@ -85,12 +84,11 @@
         appId: "1:22889544223:web:041ca634e846ee42eb332a", 
         measurementId: "G-ML4269WMVH"
     };
-    
-    // Firebase 초기화
+
     const app = initializeApp(firebaseConfig);
     // Firestore 데이터베이스에 대한 참조를 가져옵니다.
     const db = getFirestore(app); 
-    
+
     // 저장된 정보를 가져와서 화면에 표시하는 함수
     async function displayData() {
       const dataListDiv = document.getElementById('dataList');
@@ -104,15 +102,15 @@
             const data = doc.data();
             const itemDiv = document.createElement('div');
             itemDiv.innerHTML = `
-            <div class = "third">
+            <div class="third">
                 <div class=card>
                     <div class = "img">
-                        <a href="project/project1.html">
+                        <a href="projectCheck.html">
                             <img src ="image/project.png" alt="">
                         </a>
                     </div>
                     <div class = "text">
-                        <<div class="first_line">
+                        <div class="first_line">
                         <a href="#">${data.title}</a>
                         <p class="date">${data.year}-${data.semester}</p>
                         </div>
@@ -125,16 +123,33 @@
             <hr>
           `;
             dataListDiv.appendChild(itemDiv);
+
+            // 카드 클릭 시 goToProjectPage 함수 호출하여 해당 card의 title 정보 전달
+            itemDiv.addEventListener('click', () => {
+              goToProjectPage(data.title);
+            });
         });
       } catch (error) {
         console.error("Error fetching documents: ", error);
       }
     }
-    
+
+    // 카드 클릭 시 페이지 이동 및 title 정보 전달 함수
+    function goToProjectPage(title) {
+      // title 정보를 URL 파라미터로 추가하여 projectCheck.html 페이지로 이동
+      alert(title);
+      const encodedTitle = encodeURIComponent(title);
+      window.location.href = `projectCheck.html?title=${encodedTitle}`;
+      
+    }
     // 페이지 로드 시 저장된 정보 표시
     document.addEventListener('DOMContentLoaded', () => {
       displayData();
     });
+
   </script>
-</body>
-</html>
+</head>
+<body>
+
+ 
+       
