@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>글쓰기 페이지</title>
+    <title>글쓰기 페이지</title>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js"></script>
+    <meta charset="uft8">
 </head>
 <body>
   <h1>글쓰기 페이지</h1>
@@ -77,25 +80,35 @@
   <!-- 글쓰기 폼 끝 -->
 
   <!-- Firebase SDK 추가 -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js"></script>
 
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
     // Firebase 프로젝트 구성으로 대체합니다.
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
+              apiKey: "AIzaSyBSebTrjnGqnwZmYe4MvCCK02nhvTyDB2Q",
+              authDomain: "sle-web-64734.firebaseapp.com",
+              projectId: "sle-web-64734",
+              storageBucket: "sle-web-64734.appspot.com",
+              messagingSenderId: "22889544223",
+              appId: "1:22889544223:web:041ca634e846ee42eb332a",
+              measurementId: "G-ML4269WMVH"
     };
-
-    // Firebase 초기화
-    firebase.initializeApp(firebaseConfig);
-
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    function checkLoginStatus() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                } else {
+                  alert('로그인이 필요합니다.');
+                  window.location.href = 'index.html'; // 'index.html'을 로그인 페이지의 실제 URL로 변경해주세요
+                }
+            });
+            }
     // Firestore 데이터베이스에 대한 참조를 가져옵니다.
-    const db = firebase.firestore();
 
     function validateForm() {
       // 입력 필드들을 가져옴
@@ -143,6 +156,7 @@
     function goToProjectPage() {
       window.location.href = 'project.html'; // project.html 페이지로 돌아감
     }
+    window.addEventListener("load", checkLoginStatus);
   </script>
 </body>
 </html>

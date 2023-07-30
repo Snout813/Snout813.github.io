@@ -38,7 +38,7 @@
             </div>
             <div class = "second">
                 <div class="menu">
-                    <li class="menu-item" data-filter="*">
+                    <li class="menu-item" data-filter="ALL">
                         <a>ALL</a>
                     </li>
                     <li class="menu-item" data-filter ="2023-1">
@@ -50,15 +50,13 @@
                     <li class="menu-item" data-filter = "2022-1">
                         <a>2022-1</a>
                     </li>
-                    <li class="menu-item" data-filete="2021-2">
+                    <li class="menu-item" data-filter="2021-2">
                         <a>2021-2</a>
                     </li>
                 </div>
             </div>
             <div class="writeButton">
-                <button class ="write">
-                    글 쓰기
-                </button>
+                <button id="writeButton" class="write">글 쓰기</button>
             </div>
             <div class = "third">
                 <div class=card data-type="2023-1">
@@ -73,7 +71,7 @@
                                 슬기짜기 웹페이지
                             </a>
                             <p class = "date">
-                                2023-2
+                                2023-1
                             </p>
                         </div>
                         <div class = second_line>
@@ -83,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2023-1">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -95,7 +93,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2023-1
                             </p>
                         </div>
                         <div class = second_line>
@@ -105,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2023-1">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -117,7 +115,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2022-2
                             </p>
                         </div>
                         <div class = second_line>
@@ -127,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2023-1">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -139,7 +137,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2022-2
                             </p>
                         </div>
                         <div class = second_line>
@@ -149,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2022-2">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -161,7 +159,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2022-2
                             </p>
                         </div>
                         <div class = second_line>
@@ -171,7 +169,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2022-1">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -183,7 +181,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2022-1
                             </p>
                         </div>
                         <div class = second_line>
@@ -193,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2022-1">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -205,7 +203,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2022-1
                             </p>
                         </div>
                         <div class = second_line>
@@ -215,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2021-2">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -227,7 +225,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2021-2
                             </p>
                         </div>
                         <div class = second_line>
@@ -237,7 +235,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=card>
+                <div class=card data-type="2021-2">
                     <div class = "img">
                         <a href="#">
                             <img src ="" alt="">
@@ -249,7 +247,7 @@
                                 슬기짜기
                             </a>
                             <p class = "date">
-                                2023-2
+                                2021-2
                             </p>
                         </div>
                         <div class = second_line>
@@ -308,34 +306,78 @@
             function checkLoginStatus() {
             const loginMenu = document.getElementById("loginmenu");
             const loginText = document.getElementById("loginText");
+            const writeButton = document.getElementById("writeButton");
 
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                console.log("user");
-                // 사용자가 로그인 상태일 때, "Logout"으로 변경
-                loginText.textContent = "Logout";
-                loginMenu.href = "index.html"; // 더미 링크를 사용하여 클릭 이벤트 방지 (실제로 링크를 클릭해도 페이지가 이동하지 않음)
+                    console.log("user");
+                    // 사용자가 로그인 상태일 때, "Logout"으로 변경
+                    loginText.textContent = "Logout";
+                    loginMenu.href = "index.html"; // 더미 링크를 사용하여 클릭 이벤트 방지 (실제로 링크를 클릭해도 페이지가 이동하지 않음)
+                    // Logout 버튼 클릭 시 Firebase에서 로그아웃하고 index.html로 리다이렉션
+                    loginMenu.addEventListener("click", () => {
+                        signOut(auth).then(() => {
+                        // Sign-out successful.
+                        }).catch((error) => {
+                        // An error happened.
+                        });
 
-                // Logout 버튼 클릭 시 Firebase에서 로그아웃하고 index.html로 리다이렉션
-                loginMenu.addEventListener("click", () => {
-                    signOut(auth).then(() => {
-                    // Sign-out successful.
-                    }).catch((error) => {
-                    // An error happened.
                     });
-                });
+                    writeButton.addEventListener("click", () => {
+                        window.location.href = "write.html";
+                    });
                 } else {
                 console.log("no");
                 // 사용자가 로그아웃 상태일 때, "Login"으로 변경
                 loginText.textContent = "LogIn";
                 // 실제 로그인 페이지로 이동하도록 href 속성을 설정
                 loginMenu.href = "login.html";
+                writeButton.addEventListener("click", () => {
+                    alert("로그인이 필요합니다. 로그인 페이지로 이동합니다.");
+                    window.location.href = "login.html"; // Replace "login.html" with your actual login page URL
+                });
+
                 }
             });
             }
+            // 카테고리 필터용
+            function filterCards(category) {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach((card) => {
+                const dataType = card.getAttribute('data-type');
+                if (dataType === category || category === 'ALL') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+                });
+            }
 
+            // 카테고리 버튼에 이벤트 리스너를 추가하는 함수
+            function addCategoryListeners() {
+                const categoryButtons = document.querySelectorAll('.menu-item');
+                categoryButtons.forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    const selectedCategory = event.currentTarget.getAttribute('data-filter');
+                    filterCards(selectedCategory);
+                });
+                });
+            }
+
+            // "ALL" 버튼 클릭 시 모든 카드를 표시하도록 이벤트 리스너 추가
+            function addAllButtonListener() {
+                const allButton = document.querySelector('.menu-item[data-filter="ALL"]');
+                allButton.addEventListener('click', () => {
+                filterCards('ALL');
+                });
+            }
             // 페이지가 로드되면 로그인 상태를 확인하여 텍스트 변경
             window.addEventListener("load", checkLoginStatus);
+            // 페이지 로드 이벤트 핸들러
+            window.addEventListener('load', () => {
+                addCategoryListeners();
+                addAllButtonListener(); // "ALL" 버튼 리스너 추가
+            });
         </script>
     </body>
 </html>
