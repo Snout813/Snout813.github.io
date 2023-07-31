@@ -27,10 +27,10 @@
     </div>
     <div id ="load">
     </div>
-
-    <div>
+    <p class ="date">
       <button id="delete">삭제</button>
-    </div>
+    </p>
+
     <div class="footer">
       <div class="footer_text">
           슬기짜기
@@ -59,7 +59,6 @@
       import { getFirestore, collection, query, where, getDocs, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
       import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
-      const deleteButton = document.getElementById("delete");
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
@@ -99,6 +98,7 @@
                         });
                     });
                 // 삭제 버튼 클릭 이벤트 처리 함수
+                const deleteButton = document.getElementById("delete");
                 deleteButton.addEventListener("click", () => {
                   const confirmation = confirm("정말로 문서를 삭제하시겠습니까?");
                   if (confirmation) {
@@ -169,9 +169,6 @@
             const itemDiv1 = document.createElement('div');
             itemDiv1.classList.add("second");
             itemDiv1.innerHTML = `
-              <p class ="date">
-                ${data.year}-${data.semester}
-              </p>
               <p class ="title">
                 ${data.title}
               </p>
@@ -202,9 +199,9 @@
                       <p>
                           | 서비스 소개 | ${data.description}
                       </p>
+                      <div class="link"><p><a href="${data.projectLink}" target="_blank">Project link</a></p></div>
                   </div>
               </div>
-              <p><strong>프로젝트 링크:</strong> ${data.projectLink}</p>
             `;
             dataListDiv.appendChild(itemDiv1);
             dataListDiv.appendChild(itemDiv2);

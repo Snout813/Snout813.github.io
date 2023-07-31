@@ -109,7 +109,7 @@ h5{
     padding-top: 20px;
     padding-bottom: 20px;
     width: 1300px;
-    background-color: #fff; /* 이미지 밑에 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
+    background-color: #f9f9f9; /* 이미지 밑에 있는 영역을 확인하기 위한 임시 색상, 실제로 사용하지 않아도 됩니다. */
 }
 .date{
     color:#fff;
@@ -130,6 +130,18 @@ h5{
     margin-left: auto;
     margin-top: 74px;
 
+}
+
+#delete{
+    border: 0;
+    outline: 0;
+    background-color: #54B977;
+    color: #F3F5F8;
+    font-family: Noto Sans KR;
+    font-size: 12.004px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .title{
@@ -234,10 +246,9 @@ hr.solid{
 }
 
 .explain > p{
-    margin-top: 64px;
-    margin-left:37px;
+    margin-left: 40px;
+    margin-top: 25px;
     width: 709px;
-    height: 155px;
     color: #000;
     font-family: Noto Sans KR;
     font-size: 18px;
@@ -275,6 +286,19 @@ hr.solid{
     font-size: 16px;
     font-weight: bold;
     line-height: normal;
+}
+
+.link{
+    margin-left: 30px;
+    margin-top: 63px;
+    display: inline-flex;
+    padding: 16.672px 30.01px;
+    justify-content: center;
+    align-items: center;
+    gap: 6.669px;
+
+    border-radius: 26.675px;
+    background: #F9D96C;
 }
 
 /*footer*/
